@@ -108,7 +108,7 @@ const names = [
 
 const changeCameraPos = [];
 changeCameraPos.push(
-    LoadObject(
+    await LoadObject(
         "Earth",
         "sun",
         { x: sunSize, y: sunSize, z: sunSize },
@@ -120,7 +120,7 @@ changeCameraPos.push(
 
 for (let i = 0; i < 8; i++) {
     changeCameraPos.push(
-        LoadObject(
+        await LoadObject(
             "Earth",
             names[i],
             { x: sizes[i], y: sizes[i], z: sizes[i] },
@@ -141,18 +141,17 @@ LoadObject(
 // OnRender();
 
 names.unshift("sun");
-SetControls();
+await SetControls();
 
-function SetControls() {
+async function SetControls() {
     const main = document.getElementById("controls");
     for (let i = 0; i < names.length; i++) {
         const child = document.createElement("div");
         child.innerHTML = names[i];
         child.classList.add("child");
         child.addEventListener("click", () => {
-            changeCameraPos[i].then((res) => {
-                res();
-            });
+            const res = changeCameraPos[i]
+            res()
         });
         main.appendChild(child);
     }
