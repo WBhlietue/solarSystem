@@ -29,7 +29,7 @@ const camera = new PerspectiveCamera(
 const renderer = new WebGLRenderer();
 
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+
 camera.position.z = 75;
 
 const dirLight = new DirectionalLight(0xffffff, 1);
@@ -45,7 +45,7 @@ async function LoadObject(modelName, textureName, scale, pos, cameraDis, rot) {
     const loader = new FBXLoader();
     const model = await loader.loadAsync("src/models/" + modelName + ".fbx");
     const texture = await new TextureLoader().loadAsync(
-        "src/texture/" + textureName + ".png"
+        "src/texture/" + textureName + ".jpg"
     );
     const material = new MeshPhongMaterial();
     material.color = new Color(0xffffff);
@@ -155,4 +155,6 @@ async function SetControls() {
         });
         main.appendChild(child);
     }
+    document.getElementById("loading").remove()
+    document.body.appendChild(renderer.domElement);
 }
