@@ -1,0 +1,30 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#controls{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+}
+
+#controls .child{
+    width: 7vw;
+    height: 3vw;
+    margin: 10px;
+    /* position: fixed; */
+    background-color: #00000088;
+    border-radius: 10px;
+    border: white 1px solid;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:  all 0.4s;
+}
+
+#controls .child:hover{
+    background-color: #ffffff88;
+    color: black;
+}
